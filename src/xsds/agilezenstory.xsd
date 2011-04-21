@@ -1,0 +1,84 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="story" type="story"/>
+  
+  <xs:complexType name="story">
+    <xs:sequence>
+	  <xs:element name="blockedReason" type="xs:string" minOccurs="0"/>
+      <xs:element name="color" type="color" minOccurs="0"/>
+      <xs:element name="creator" type="user" minOccurs="0"/>
+      <xs:element name="deadline" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="id" type="xs:integer" minOccurs="0"/>
+      <xs:element name="owner" type="user" minOccurs="0"/>
+      <xs:element name="phase" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:integer" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="priority" type="xs:string" minOccurs="0"/>
+      <xs:element name="project" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:integer" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="size" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="status" minOccurs="0"/>
+	  <xs:element name="tags"  minOccurs="0">
+	    <xs:complexType>
+		  <xs:sequence>		   
+ 		    <xs:element name="tag"  type="tag" minOccurs="0" maxOccurs="unbounded"/>
+		  </xs:sequence>
+		</xs:complexType>
+	  </xs:element>
+      <xs:element name="text" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:simpleType name="color">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="grey"/>
+      <xs:enumeration value="purple"/>
+      <xs:enumeration value="blue" />
+      <xs:enumeration value="yellow" />
+      <xs:enumeration value="green"/>
+      <xs:enumeration value="orange"/>
+      <xs:enumeration value="teal"/>
+      <xs:enumeration value="red"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:integer" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="userName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="planned"/>
+      <xs:enumeration value="started"/>
+	  <xs:enumeration value="finished"/>
+	  <xs:enumeration value="blocked"/>
+	  <xs:enumeration value="ready"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="tag">
+	<xs:sequence>
+	  <xs:element name="id" type="xs:integer" minOccurs="0"/>
+	  <xs:element name="name" type="xs:string" minOccurs="0"/>
+	</xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

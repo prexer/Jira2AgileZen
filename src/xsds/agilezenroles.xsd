@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="./agilezenstory.xsd"/>
+    <xs:element name="roles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items">
+				  <xs:complexType>
+				    <xs:sequence>
+					  <xs:element name="role" type="role" maxOccurs="unbounded"/>						
+					</xs:sequence>
+				  </xs:complexType>
+				</xs:element>
+				<xs:element name="page" type="xs:integer"/>
+				<xs:element name="pageSize" type="xs:integer"/>
+				<xs:element name="totalItems" type="xs:integer"/>
+				<xs:element name="totalPages" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:element name="access" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:integer" minOccurs="0"/>
+      <xs:element name="members" minOccurs="0">
+		<xs:complexType>
+		  <xs:sequence>
+		    <xs:element name="user" type="user" maxOccurs="unbounded"/>
+		  </xs:sequence>
+		</xs:complexType>
+	  </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

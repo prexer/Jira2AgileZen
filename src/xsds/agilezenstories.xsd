@@ -1,0 +1,20 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="./agilezenstory.xsd"/>
+    <xs:element name="stories">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="items">
+				  <xs:complexType>
+				    <xs:sequence>
+					  <xs:element ref="story"  maxOccurs="unbounded"/>
+					</xs:sequence>
+				  </xs:complexType>
+				</xs:element>
+				<xs:element name="page" type="xs:integer"/>
+				<xs:element name="pageSize" type="xs:integer"/>
+				<xs:element name="totalItems" type="xs:integer"/>
+				<xs:element name="totalPages" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
