@@ -1,6 +1,7 @@
 #!/usr/bin/env gosu
 classpath "../src/,../lib/*.jar"
 
+
 uses gw.GuidewireJiraSoapServiceServiceLocator
 uses gw.RemoteFilter
 uses xsds.agilezenstories.Story
@@ -10,8 +11,6 @@ uses az.jiralogon
 uses org.apache.log4j.Logger
 uses java.util.GregorianCalendar
 uses java.util.Date
-
-var mylogger = Logger.getLogger( "Jira2AgileZen" )
 
 var myAZUtil = new AZUtil()
 myAZUtil.Project = az.AgileZen.AZProjectID
@@ -23,7 +22,6 @@ var jirafilter = jiralogon.jirafilter
 var jiraservice = new GuidewireJiraSoapServiceServiceLocator().getgwjirasoapservice();
 var jiratoken = jiraservice.login(jirauser, jirapass)
 var filters = jiraservice.getSavedFilters(jiratoken)
-mylogger.warn( "Warning Will Robinson" )
 
 var kanbanfilter = filters.firstWhere( \ r -> r.Id.equals( jirafilter ) )
 if ( kanbanFilter != null ) {
@@ -37,7 +35,7 @@ var azStories = myAZUtil.getAZStories()
 if (jiraissues.Count == 0) throw ("No Jira issues found in your filter, or Jira not available")
 
 jiraissues.values.each(\ j ->    { 
-  if (j.Type.equals("6") ) print ("Jira: ${j.Key}, Type: ${j.Type}")
+  //if (j.Type.equals("6") ) print ("Jira: ${j.Key}, Type: ${j.Type}")
   if (azStories.containsKey( j.Key )){ 
     myAZUtil.updateAZStory(j, azStories.get( j.Key ))
   }  else {

@@ -6,36 +6,46 @@
     <xs:sequence>
 	  <xs:element name="blockedReason" type="xs:string" minOccurs="0"/>
       <xs:element name="color" type="color" minOccurs="0"/>
+	  <xs:element name="comments"  minOccurs="0">
+         <xs:complexType>
+             <xs:sequence>
+                 <xs:element name="comment" type="commentset" minOccurs="0" maxOccurs="unbounded"/>
+             </xs:sequence>
+         </xs:complexType>
+      </xs:element>
       <xs:element name="creator" type="user" minOccurs="0"/>
+      <xs:element name="details" type="xs:string" minOccurs="0"/>
       <xs:element name="deadline" type="xs:dateTime" minOccurs="0"/>
       <xs:element name="id" type="xs:integer" minOccurs="0"/>
+	  <xs:element name="metrics" type="metricSet" minOccurs="0"/>
+	  <xs:element name="milestones"  minOccurs="0">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="milestone" type="milestoneSet" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="owner" type="user" minOccurs="0"/>
-      <xs:element name="phase" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="id" type="xs:integer" minOccurs="0"/>
-            <xs:element name="name" type="xs:string" minOccurs="0"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="phase" type="idNamePair"  minOccurs="0"/>
       <xs:element name="priority" type="xs:string" minOccurs="0"/>
-      <xs:element name="project" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="id" type="xs:integer" minOccurs="0"/>
-            <xs:element name="name" type="xs:string" minOccurs="0"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="project" type="idNamePair" minOccurs="0"/>
       <xs:element name="size" type="xs:string" minOccurs="0"/>
       <xs:element name="status" type="status" minOccurs="0"/>
+      <xs:element name="steps" minOccurs="0">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="step" type="milestoneSet" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+      </xs:element>
 	  <xs:element name="tags"  minOccurs="0">
 	    <xs:complexType>
 		  <xs:sequence>		   
- 		    <xs:element name="tag"  type="tag" minOccurs="0" maxOccurs="unbounded"/>
+ 		    <xs:element name="tag"  type="idNamePair" minOccurs="0" maxOccurs="unbounded"/>
 		  </xs:sequence>
 		</xs:complexType>
 	  </xs:element>
+      <xs:element name="tasks" type="xs:string" minOccurs="0"/>
       <xs:element name="text" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
@@ -54,6 +64,41 @@
     </xs:restriction>
   </xs:simpleType>
 
+
+  <xs:complexType name="metricSet">
+    <xs:sequence>
+      <xs:element name="blockedTime" type="xs:float" minOccurs="0"/>
+      <xs:element name="createTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="cycleTime" type="xs:float" minOccurs="0"/>
+      <xs:element name="efficiency" type="xs:float" minOccurs="0"/>
+      <xs:element name="finishTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="leadTime" type="xs:float" minOccurs="0"/>
+      <xs:element name="startTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="waitTime" type="xs:float" minOccurs="0"/>
+      <xs:element name="workTime" type="xs:float" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+   <xs:complexType name="milestoneSet">
+    <xs:sequence>
+            <xs:element name="duration" type="xs:integer" minOccurs="0"/>
+            <xs:element name="endTime" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="id" type="xs:integer" minOccurs="0"/>
+            <xs:element name="phase" type="idNamePair" minOccurs="0"/>
+            <xs:element name="startTime" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="type" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="commentset">
+    <xs:sequence>
+            <xs:element name="author" type="user" minOccurs="0"/>
+            <xs:element name="createTime" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="id" type="xs:integer" minOccurs="0"/>
+            <xs:element name="text" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="user">
     <xs:sequence>
       <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -62,7 +107,6 @@
       <xs:element name="userName" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-  
 
   <xs:simpleType name="status">
     <xs:restriction base="xs:string">
@@ -74,7 +118,7 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:complexType name="tag">
+  <xs:complexType name="idNamePair">
 	<xs:sequence>
 	  <xs:element name="id" type="xs:integer" minOccurs="0"/>
 	  <xs:element name="name" type="xs:string" minOccurs="0"/>

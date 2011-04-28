@@ -13,6 +13,8 @@ uses com.guidewire.util.Throw
 uses xsds.agilezenstory.types.complex.User
 uses xsds.agilezenroles.Roles
 uses xsds.agilezenroles.types.complex.Role
+uses java.util.Date
+uses java.util.TimeZone
 
 class AZUtil {
   
@@ -26,7 +28,7 @@ class AZUtil {
   
   public function getAZStories() : HashMap<String, Story> {
     var storymap = new HashMap<String, Story>()
-    var url = "https://agilezen.com/api/v1/projects/${_project}/stories?apikey=${_apikey}"
+    var url = "https://agilezen.com/api/v1/projects/${_project}/stories?with=everything&pagesize=1000&apikey=${_apikey}"
     var getMethod = new GetMethod(url)
     getMethod.addRequestHeader( "Content-Type", "application/xml" )
   
@@ -37,7 +39,7 @@ class AZUtil {
     var resp =   getMethod.ResponseBody
   //  print ("Status text: " + getMethod.StatusText)
   //  print ("Status code: " + getMethod.StatusCode)
-  //  print ("Response: " + getMethod.ResponseBodyAsString)
+//    print ("Response: " + getMethod.ResponseBodyAsString)
     var stories = Stories.parse( resp )
     stories.Items.Story.each( \ s -> {
 //      print ("AZ Story Text: " + s.Text)
@@ -93,6 +95,14 @@ class AZUtil {
   
   public function updateAZStory(jira : RemoteIssue, story : Story) {
    // check if we need to update anything first
+   var dt = new Date()
+   var tz =  TimeZone.GMT
+//   story.Steps.Step.each( \ s ->{
+//     if(s.EndTime == null && s.StartTime.Day >= 26 && s.StartTime.Month == 4 )   print("${story.Id} steptype: ${s.Type}, starttime: ${s.StartTime.toCalendar(tz).Time}, jira update: ${jira.Updated.Time}") 
+//     } )
+//   story.Milestones.Milestone.each( \ s ->{
+//     if(s.EndTime == null && s.StartTime.Day >= 26 && s.StartTime.Month == 4 )   print("${story.Id} milestone: ${s.Type}, starttime: ${s.StartTime.toCalendar(tz).Time}, jira update: ${jira.Updated.Time}")      
+//  })
     if (needtoUpdateAZ(jira, story)) {
       print ("updating AZ story ${story.Id}: " + jira.Key)
       var putMethod = new PutMethod("https://agilezen.com/api/v1/projects/${_project}/stories/${story.Id}?apikey=${_apikey}")
@@ -125,7 +135,7 @@ class AZUtil {
         st.Owner.UserName = jira.Assignee
       }
       st.Priority = az.jiraprioity.getValueByName( jira.Priority )
-      if (azjiraPhase.equals( jira.Status )) {} 
+      if (azjiraPhase.equals( jira.Status )) {}  //no phase/status change
         else {
           st.Phase.Id = new BigInteger( JiraToAgileZenPhases.getValueByName(jira.Status))
           if (jira.Status.equals( "In QA" ) || jira.Status.equals( "10000" )){
@@ -134,15 +144,18 @@ class AZUtil {
                 st.BlockedReason = "Ready for QA"
                 st.Status=Blocked
               }
-        }
-
+          }
         }
  //     story.print()
       st.print()
       putMethod.setRequestBody( st.asUTFString() )
       _updateCount++
-      print ("calling API:" + httpClient.executeMethod( putMethod ))
+      var res = httpClient.executeMethod( putMethod )
+      if(res == 400){
+        print("State is "+ httpClient.State + "result:" + putMethod.ResponseBodyAsString)
+      }
       putMethod.releaseConnection()
+      
     }
   }
   
@@ -242,5 +255,5 @@ class AZUtil {
      
      return null
    }
-  
+    
 }
