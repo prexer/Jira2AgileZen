@@ -14,8 +14,8 @@
          </xs:complexType>
       </xs:element>
       <xs:element name="creator" type="user" minOccurs="0"/>
-      <xs:element name="details" type="xs:string" minOccurs="0"/>
       <xs:element name="deadline" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="details" type="xs:string" minOccurs="0"/>
       <xs:element name="id" type="xs:integer" minOccurs="0"/>
 	  <xs:element name="metrics" type="metricSet" minOccurs="0"/>
 	  <xs:element name="milestones"  minOccurs="0">
@@ -45,7 +45,13 @@
 		  </xs:sequence>
 		</xs:complexType>
 	  </xs:element>
-      <xs:element name="tasks" type="xs:string" minOccurs="0"/>
+      <xs:element name="tasks"  minOccurs="0">
+	    <xs:complexType>
+		  <xs:sequence>
+            <xs:element name="task" type="taskSet" minOccurs="0" maxOccurs="unbounded"/>
+		  </xs:sequence>
+		</xs:complexType>
+	  </xs:element>
       <xs:element name="text" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
@@ -64,7 +70,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-
   <xs:complexType name="metricSet">
     <xs:sequence>
       <xs:element name="blockedTime" type="xs:float" minOccurs="0"/>
@@ -77,6 +82,18 @@
       <xs:element name="waitTime" type="xs:float" minOccurs="0"/>
       <xs:element name="workTime" type="xs:float" minOccurs="0"/>
     </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="taskSet">
+    <xs:sequence>
+      <xs:element name="createTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="finishTime" type="xs:dateTime" minOccurs="0"/>
+	  <xs:element name="finishedBy" type="user" minOccurs="0"/>
+	  <xs:element name="id" type="xs:integer" minOccurs="0"/>
+      <xs:element name="status" type="status" minOccurs="0" />
+	  <xs:element name="text" type="xs:string" minOccurs="0" />
+	  
+     </xs:sequence>
   </xs:complexType>
   
    <xs:complexType name="milestoneSet">
@@ -115,6 +132,8 @@
 	  <xs:enumeration value="finished"/>
 	  <xs:enumeration value="blocked"/>
 	  <xs:enumeration value="ready"/>
+	  <xs:enumeration value="complete"/>
+	  <xs:enumeration value="incomplete"/>
     </xs:restriction>
   </xs:simpleType>
   
