@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<wsdl:definitions targetNamespace="http://wsdl.claimsbusiness.citizens.com/schemas" xmlns:cb="http://secureepas.claimsbusiness.citizens.com/schemas" xmlns:tns="http://wsdl.claimsbusiness.citizens.com/schemas" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://secureepas.claimsbusiness.citizens.com/schemas" schemaLocation="claimsBusinessService_xsd.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="addJournalRequest">
+    <wsdl:part name="addJournal" element="cb:addJournal"/>
+  </wsdl:message>
+  <wsdl:message name="addJournalResponse">
+    <wsdl:part name="addJournalResponse" element="cb:addJournalResponse"/>
+  </wsdl:message>
+  <wsdl:message name="reopenClaimRequest">
+    <wsdl:part name="reopenClaim" element="cb:reopenClaim"/>
+  </wsdl:message>
+  <wsdl:message name="reopenClaimResponse">
+    <wsdl:part name="reopenClaimResponse" element="cb:reopenClaimResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimsPolicyInfoRequest">
+    <wsdl:part name="getClaimsPolicyInfo" element="cb:getClaimsPolicyInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimsPolicyInfoResponse">
+    <wsdl:part name="getClaimsPolicyInfoResponse" element="cb:getClaimsPolicyInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimantInfoRequest">
+    <wsdl:part name="getClaimantInfo" element="cb:getClaimantInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimantInfoResponse">
+    <wsdl:part name="getClaimantInfoResponse" element="cb:getClaimantInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentProcessingInfoRequest">
+    <wsdl:part name="getPaymentProcessingInfo" element="cb:getPaymentProcessingInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentProcessingInfoResponse">
+    <wsdl:part name="getPaymentProcessingInfoResponse" element="cb:getPaymentProcessingInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getReserveDataRequest">
+    <wsdl:part name="getReserveData" element="cb:getReserveData"/>
+  </wsdl:message>
+  <wsdl:message name="getReserveDataResponse">
+    <wsdl:part name="getReserveDataResponse" element="cb:getReserveDataResponse"/>
+  </wsdl:message>
+  <wsdl:message name="pingRequest">
+    <wsdl:part name="ping" element="cb:ping"/>
+  </wsdl:message>
+  <wsdl:message name="pingResponse">
+    <wsdl:part name="pingResponse" element="cb:pingResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimDisbursementsForDateRequest">
+    <wsdl:part name="getClaimDisbursementsForDate" element="cb:getClaimDisbursementsForDate"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimDisbursementsForDateResponse">
+    <wsdl:part name="getClaimDisbursementsForDateResponse" element="cb:getClaimDisbursementsForDateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getFNOLInfoRequest">
+    <wsdl:part name="getFNOLInfo" element="cb:getFNOLInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getFNOLInfoResponse">
+    <wsdl:part name="getFNOLInfoResponse" element="cb:getFNOLInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getFNOLClaimInfoRequest">
+    <wsdl:part name="getFNOLClaimInfo" element="cb:getFNOLClaimInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getFNOLClaimInfoResponse">
+    <wsdl:part name="getFNOLClaimInfoResponse" element="cb:getFNOLClaimInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="updateClaimAdjustingFirmResponse">
+    <wsdl:part name="updateClaimAdjustingFirmResponse" element="cb:updateClaimAdjustingFirmResponse"/>
+  </wsdl:message>
+  <wsdl:message name="updateClaimAdjustingFirmRequest">
+    <wsdl:part name="updateClaimAdjustingFirm" element="cb:updateClaimAdjustingFirm"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimsAccountingInfoRequest">
+    <wsdl:part name="getClaimsAccountingInfo" element="cb:getClaimsAccountingInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getClaimsAccountingInfoResponse">
+    <wsdl:part name="getClaimsAccountingInfoResponse" element="cb:getClaimsAccountingInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="submitClaimPaymentRequest">
+    <wsdl:part name="paymentRequestTO" element="cb:paymentRequestTO"/>
+  </wsdl:message>
+  <wsdl:message name="submitClaimPaymentResponse">
+    <wsdl:part name="submitClaimPaymentReturn" element="cb:submitClaimPaymentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getJournalInfoRequest">
+    <wsdl:part name="getJournalInfo" element="cb:getJournalInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getJournalInfoResponse">
+    <wsdl:part name="getJournalInfoResponse" element="cb:getJournalInfoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="setReserveRequest">
+    <wsdl:part name="setReserve" element="cb:setReserve"/>
+  </wsdl:message>
+  <wsdl:message name="setReserveResponse">
+    <wsdl:part name="setReserveResponse" element="cb:setReserveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="attachPublicAdjusterRequest">
+    <wsdl:part name="attachPublicAdjuster" element="cb:attachPublicAdjuster"/>
+  </wsdl:message>
+  <wsdl:message name="attachPublicAdjusterResponse">
+    <wsdl:part name="attachPublicAdjusterResponse" element="cb:attachPublicAdjusterResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ClaimsBusinessService">
+    <wsdl:operation name="getJournalInfo">
+      <wsdl:input name="getJournalInfoRequest" message="tns:getJournalInfoRequest"/>
+      <wsdl:output name="getJournalInfoResponse" message="tns:getJournalInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="submitClaimPayment">
+      <wsdl:input name="submitClaimPaymentRequest" message="tns:submitClaimPaymentRequest"/>
+      <wsdl:output name="submitClaimPaymentResponse" message="tns:submitClaimPaymentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="setReserve">
+      <wsdl:input name="setReserveRequest" message="tns:setReserveRequest"/>
+      <wsdl:output name="setReserveResponse" message="tns:setReserveResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getFNOLClaimInfo">
+      <wsdl:input name="getFNOLClaimInfoRequest" message="tns:getFNOLClaimInfoRequest"/>
+      <wsdl:output name="getFNOLClaimInfoResponse" message="tns:getFNOLClaimInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimsPolicyInfo">
+      <wsdl:input name="getClaimsPolicyInfoRequest" message="tns:getClaimsPolicyInfoRequest"/>
+      <wsdl:output name="getClaimsPolicyInfoResponse" message="tns:getClaimsPolicyInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getReserveData">
+      <wsdl:input name="getReserveDataRequest" message="tns:getReserveDataRequest"/>
+      <wsdl:output name="getReserveDataResponse" message="tns:getReserveDataResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getFNOLInfo">
+      <wsdl:input name="getFNOLInfoRequest" message="tns:getFNOLInfoRequest"/>
+      <wsdl:output name="getFNOLInfoResponse" message="tns:getFNOLInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addJournal">
+      <wsdl:input name="addJournalRequest" message="tns:addJournalRequest"/>
+      <wsdl:output name="addJournalResponse" message="tns:addJournalResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <wsdl:input name="pingRequest" message="tns:pingRequest"/>
+      <wsdl:output name="pingResponse" message="tns:pingResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentProcessingInfo">
+      <wsdl:input name="getPaymentProcessingInfoRequest" message="tns:getPaymentProcessingInfoRequest"/>
+      <wsdl:output name="getPaymentProcessingInfoResponse" message="tns:getPaymentProcessingInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="reopenClaim">
+      <wsdl:input name="reopenClaimRequest" message="tns:reopenClaimRequest"/>
+      <wsdl:output name="reopenClaimResponse" message="tns:reopenClaimResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimsAccountingInfo">
+      <wsdl:input name="getClaimsAccountingInfoRequest" message="tns:getClaimsAccountingInfoRequest"/>
+      <wsdl:output name="getClaimsAccountingInfoResponse" message="tns:getClaimsAccountingInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimantInfo">
+      <wsdl:input name="getClaimantInfoRequest" message="tns:getClaimantInfoRequest"/>
+      <wsdl:output name="getClaimantInfoResponse" message="tns:getClaimantInfoResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateClaimAdjustingFirm">
+      <wsdl:input name="updateClaimAdjustingFirmRequest" message="tns:updateClaimAdjustingFirmRequest"/>
+      <wsdl:output name="updateClaimAdjustingFirmResponse" message="tns:updateClaimAdjustingFirmResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimDisbursementsForDate">
+      <wsdl:input name="getClaimDisbursementsForDateRequest" message="tns:getClaimDisbursementsForDateRequest"/>
+      <wsdl:output name="getClaimDisbursementsForDateResponse" message="tns:getClaimDisbursementsForDateResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="attachPublicAdjuster">
+      <wsdl:input name="attachPublicAdjusterRequest" message="tns:attachPublicAdjusterRequest"/>
+      <wsdl:output name="attachPublicAdjusterResponse" message="tns:attachPublicAdjusterResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClaimsBusinessSoapBinding" type="tns:ClaimsBusinessService">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getJournalInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getJournalInfo"/>
+      <wsdl:input name="getJournalInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getJournalInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitClaimPayment">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/submitClaimPayment"/>
+      <wsdl:input name="submitClaimPaymentRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitClaimPaymentResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setReserve">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/setReserve"/>
+      <wsdl:input name="setReserveRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setReserveResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFNOLClaimInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getFNOLClaimInfo"/>
+      <wsdl:input name="getFNOLClaimInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFNOLClaimInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimsPolicyInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getClaimsPolicyInfo"/>
+      <wsdl:input name="getClaimsPolicyInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClaimsPolicyInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReserveData">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getReserveData"/>
+      <wsdl:input name="getReserveDataRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReserveDataResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFNOLInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getFNOLInfo"/>
+      <wsdl:input name="getFNOLInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFNOLInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addJournal">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/addJournal"/>
+      <wsdl:input name="addJournalRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addJournalResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/ping"/>
+      <wsdl:input name="pingRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pingResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentProcessingInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getPaymentProcessingInfo"/>
+      <wsdl:input name="getPaymentProcessingInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPaymentProcessingInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reopenClaim">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/reopenClaim"/>
+      <wsdl:input name="reopenClaimRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reopenClaimResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimsAccountingInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getClaimsAccountingInfo"/>
+      <wsdl:input name="getClaimsAccountingInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClaimsAccountingInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimantInfo">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getClaimantInfo"/>
+      <wsdl:input name="getClaimantInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClaimantInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateClaimAdjustingFirm">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/updateClaimAdjustingFirm"/>
+      <wsdl:input name="updateClaimAdjustingFirmRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateClaimAdjustingFirmResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClaimDisbursementsForDate">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/getClaimDisbursementsForDate"/>
+      <wsdl:input name="getClaimDisbursementsForDateRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getClaimDisbursementsForDateResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="attachPublicAdjuster">
+      <wsdlsoap:operation soapAction="http://secureepas.claimsbusiness.citizens.com/attachPublicAdjuster"/>
+      <wsdl:input name="attachPublicAdjusterRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="attachPublicAdjusterResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClaimsBusinessServiceService">
+    <wsdl:port name="ClaimsBusinessService" binding="tns:ClaimsBusinessSoapBinding">
+      <wsdlsoap:address location="http://sys-ctsapdev202.lifecycle.citizensfla-sdm.local:11001/epas/epas-ws/claimsBusinessService.soap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
